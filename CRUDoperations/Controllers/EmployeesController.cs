@@ -31,7 +31,7 @@ namespace CRUDoperations.Controllers
             {
                 return Ok(employee);
             }
-            return NotFound($"Employee with Id: {id} was not found");
+            return NotFound($"Employee with Id: {id} was Not Found");
         }
 
         [HttpPost]
@@ -51,7 +51,7 @@ namespace CRUDoperations.Controllers
                 _employeeData.DeleteEmployee(employee);
                 return Ok();
             }
-            return NotFound($"Employee with Id: {id} was not found");
+            return NotFound($"Employee with Id: {id} was Not Found");
         }
         [HttpPatch]
         [Route("api/[controller]/{id}")]
