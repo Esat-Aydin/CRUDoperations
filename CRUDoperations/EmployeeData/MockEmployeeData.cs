@@ -1,6 +1,7 @@
 ﻿using CRUDoperations.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CRUDoperations.EmployeeData
 {
@@ -36,7 +37,7 @@ namespace CRUDoperations.EmployeeData
 
         public Employee GetEmployee(Guid id)
         {
-            throw new NotImplementedException();
+            return employees.SingleOrDefault(x => x.Id == id);
         }
 
         public List<Employee> GetEmployees()
