@@ -29,12 +29,14 @@ namespace CRUDoperations.EmployeeData
 
         public void DeleteEmployee(Employee employee)
         {
-            throw new NotImplementedException();
+            employees.Remove(employee);
         }
 
         public Employee EditEmployee(Employee employee)
         {
-            throw new NotImplementedException();
+            var existingEmployee = GetEmployee(employee.Id);
+            existingEmployee.Name = employee.Name;
+            return existingEmployee;
         }
 
         public Employee GetEmployee(Guid id)
