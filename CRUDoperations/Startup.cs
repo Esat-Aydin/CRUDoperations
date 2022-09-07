@@ -1,8 +1,10 @@
 using CRUDoperations.EmployeeData;
+using CRUDoperations.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -29,6 +31,7 @@ namespace CRUDoperations
         {
 
             services.AddControllers();
+            services.AddDbContextPool<EmployeeContext>(options => options.UseSqlServer(Configuration.GetConnectionString("dddddddddddd"));
             services.AddSingleton<IEmployeeData, MockEmployeeData>();
             services.AddSwaggerGen(c =>
             {
