@@ -1,4 +1,5 @@
 ﻿using CRUDoperations.EmployeeData;
+using CRUDoperations.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -31,6 +32,14 @@ namespace CRUDoperations.Controllers
                 return Ok(employee);
             }
             return NotFound($"Employee with Id: {id} was not found");
+        }
+
+        [HttpPost]
+        [Route("api/[controller]")]
+        public IActionResult GetEmployee(Employee employee)
+        {
+            _employeeData.AddEmployee(employee);
+            return Created(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + HttpContext.Request.Path + "/" + employee.Id, employee);
         }
     }
 }

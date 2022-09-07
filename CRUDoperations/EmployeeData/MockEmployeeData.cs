@@ -22,7 +22,9 @@ namespace CRUDoperations.EmployeeData
         };
         public Employee AddEmployee(Employee employee)
         {
-            throw new NotImplementedException();
+            employee.Id = Guid.NewGuid();
+            employees.Add(employee);
+            return employee;
         }
 
         public void DeleteEmployee(Employee employee)
