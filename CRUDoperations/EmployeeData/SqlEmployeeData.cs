@@ -14,17 +14,28 @@ namespace CRUDoperations.EmployeeData
         }
         public Employee AddEmployee(Employee employee)
         {
-            throw new NotImplementedException();
+            employee.Id = Guid.NewGuid();
+            _employeeContext.Employees.Add(employee);
+            _employeeContext.SaveChanges();
+            return employee;
         }
 
         public void DeleteEmployee(Employee employee)
         {
-            throw new NotImplementedException();
+                _employeeContext.Employees.Remove(employee);
+                _employeeContext.SaveChanges();
         }
 
         public Employee EditEmployee(Employee employee)
         {
-            throw new NotImplementedException();
+            var existingEmployee = _employeeContext.Employees.Find(employee.Id);
+            if(existingEmployee != null)
+            {
+                existingEmployee.Name = employee.Name;
+                _employeeContext.Employees.Update(existingEmployee);
+                _employeeContext.SaveChanges();
+            }
+            return employee;
         }
 
         public Employee GetEmployee(Guid id)
