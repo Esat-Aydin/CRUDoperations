@@ -31,8 +31,8 @@ namespace CRUDoperations
         {
 
             services.AddControllers();
-            services.AddDbContextPool<EmployeeContext>(options => options.UseSqlServer(Configuration.GetConnectionString("dddddddddddd"));
-            services.AddSingleton<IEmployeeData, MockEmployeeData>();
+            services.AddDbContextPool<EmployeeContext>(options => options.UseSqlServer(Configuration.GetConnectionString("EmployeeContextConnectionString")));
+            services.AddScoped<IEmployeeData, SqlEmployeeData>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CRUDoperations", Version = "v1" });
